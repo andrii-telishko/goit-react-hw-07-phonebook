@@ -1,0 +1,19 @@
+{
+  "contacts": [
+    {
+      "name": "Andrii Telishko",
+      "number": "38098793356",
+      "id": 1
+    },
+    {
+      "name": "Anton",
+      "number": "1256983",
+      "id": 2
+    },
+    {
+      "name": "Mango",
+      "number": "123456",
+      "id": 3
+    }
+  ]
+}

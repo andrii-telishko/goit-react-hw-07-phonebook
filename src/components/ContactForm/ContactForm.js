@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './ContactForm.scss'
 import '../styles/base.scss';
 import { connect } from 'react-redux';
-import actions from '../../redux/actions';
+import operations from '../../redux/operations';
 
 class ContactForm extends Component {
     static propTypes = {
@@ -60,7 +60,7 @@ class ContactForm extends Component {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: (name, number) => dispatch(actions.addContact(name, number)),
+  onSubmit: (name, number) => dispatch(operations.addContact(name, number)),
 });
 
 export default connect(null, mapDispatchToProps)(ContactForm);

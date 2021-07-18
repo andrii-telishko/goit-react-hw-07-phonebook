@@ -1,29 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ContactItem from '../ContactItem';
 import PropTypes from 'prop-types';
 import '../styles/base.scss'
 import './ContactList.scss';
 import { connect } from 'react-redux';
-import actions from '../../redux/actions'
+import operations from '../../redux/operations'
 
-const ContactsList = ({contacts, onClick}) => {
-    return (
-        <ul className='contact-list'>
-            {contacts.map(({id, name, number}) => {
+class ContactsList extends Component {
+    static propTypes = {
+    contacts: PropTypes.array.isRequired,
+    onClick: PropTypes.func.isRequired
+    };
+
+    componentDidMount() {
+        this.props.fetchContacts();
+    };
+    
+    render() {
+        return (
+            <>
+                {this.props.isLoadingContacts && <h1>Loading...</h1>}
+                <ul className='contact-list'>
+            {this.props.contacts.map(({id, name, number}) => {
                 return (<li key={id} className='contact-item'><ContactItem
                     name={name}
                     number={number} />
-                    <button type='button' onClick={()=>{onClick(id)}} className='button contact-item__button'>Delete</button>
+                    <button type='button' onClick={()=>{this.props.onClick(id)}} className='button contact-item__button'>Delete</button>
                 </li>)
             })}
         </ul>
-    );
-};
-
-ContactsList.propTypes = {
-    contacts: PropTypes.array.isRequired,
-    onClick: PropTypes.func.isRequired
-};
+            </>
+        );
+    
+    };
+        
+}
 
 const getFilteredContacts = (contacts, filter) => {
     return contacts.filter(({name}) => {
@@ -31,14 +42,35 @@ const getFilteredContacts = (contacts, filter) => {
     })
    };
 
-const mapStateToProps = ({ contacts, filter }) => ({
-  contacts: getFilteredContacts(contacts, filter),
+const mapStateToProps = ({ contacts, filter, loading }) => ({
+    contacts: getFilteredContacts(contacts, filter),
+    isLoadingContacts: loading
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClick: id => dispatch(actions.deleteContact(id)),
+    onClick: id => dispatch(operations.deleteContact(id)),
+    fetchContacts: () => dispatch(operations.fetchContacts())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
+
+// const ContactsList = ({contacts, onClick}) => {
+//     return (
+//         <ul className='contact-list'>
+//             {contacts.map(({id, name, number}) => {
+//                 return (<li key={id} className='contact-item'><ContactItem
+//                     name={name}
+//                     number={number} />
+//                     <button type='button' onClick={()=>{onClick(id)}} className='button contact-item__button'>Delete</button>
+//                 </li>)
+//             })}
+//         </ul>
+//     );
+// };
+
+// ContactsList.propTypes = {
+//     contacts: PropTypes.array.isRequired,
+//     onClick: PropTypes.func.isRequired
+// };
 
 
