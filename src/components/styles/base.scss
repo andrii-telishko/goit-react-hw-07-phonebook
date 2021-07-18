@@ -1,0 +1,31 @@
+body {
+  padding: 10px;
+}
+
+.label {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.button {
+  display: inline-block;
+  min-width: fit-content;
+  cursor: pointer;
+  font-weight: bold;
+
+  &:hover {
+    background-color: teal;
+  }
+}
+
+.input {
+  margin-top: 10px;
+  width: 200px;
+
+  &:focus {
+    border: 1px solid tomato;
+    outline: none;
+  }
+}

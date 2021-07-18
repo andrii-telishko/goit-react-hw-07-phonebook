@@ -1,0 +1,10 @@
+.contacts-form {
+  border: 1px solid black;
+  display: inline-block;
+  width: 400px;
+  padding: 20px;
+
+  &__button {
+    margin-top: 30px;
+  }
+}
