@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import '../styles/base.scss'
 import './ContactList.scss';
 import { connect } from 'react-redux';
-import operations from '../../redux/operations'
+import {operations} from '../../redux'
+import {getLoader, getFilteredContacts} from '../../redux/selectors'
 
 class ContactsList extends Component {
     static propTypes = {
@@ -36,15 +37,13 @@ class ContactsList extends Component {
         
 }
 
-const getFilteredContacts = (contacts, filter) => {
-    return contacts.filter(({name}) => {
-      return name.toLowerCase().includes(filter.toLowerCase())
-    })
-   };
 
-const mapStateToProps = ({ contacts, filter, loading }) => ({
-    contacts: getFilteredContacts(contacts, filter),
-    isLoadingContacts: loading
+
+const mapStateToProps = state => ({
+    // contacts: getFilteredContacts(contacts, filter),
+    // isLoadingContacts: loading
+    contacts: getFilteredContacts(state),
+    isLoadingContacts: getLoader(state)
 });
 
 const mapDispatchToProps = dispatch => ({

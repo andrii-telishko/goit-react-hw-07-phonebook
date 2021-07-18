@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './ContactForm.scss'
 import '../styles/base.scss';
 import { connect } from 'react-redux';
-import operations from '../../redux/operations';
+import {operations} from '../../redux';
 
 class ContactForm extends Component {
     static propTypes = {

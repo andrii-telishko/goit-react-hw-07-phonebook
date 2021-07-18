@@ -1,5 +1,5 @@
 import axios from 'axios';
-import actions from './actions'
+import {actions} from './'
 
 const { fetchContactsRequest, fetchContactsSuccess, fetchContactsError, addContactRequest, addContactSuccess, addContactError, deleteContactRequest, deleteContactSuccess, deleteContactError } = actions;
 

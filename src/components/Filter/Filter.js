@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/base.scss';
 import { connect } from 'react-redux';
-import actions from '../../redux/actions';
+import {actions} from '../../redux';
+import {getFilter} from '../../redux/selectors'
 
 const Filter = ({value, onChange}) => {
     return (
@@ -23,7 +24,7 @@ Filter.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  value: state.filter,
+  value: getFilter(state)
 });
 
 const mapDispatchToProps = dispatch => ({

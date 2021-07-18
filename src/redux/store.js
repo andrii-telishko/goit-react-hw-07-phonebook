@@ -1,6 +1,6 @@
 
 import { createReducer, configureStore, getDefaultMiddleware, combineReducers } from '@reduxjs/toolkit';
-import actions from './actions';
+import {actions} from './';
 import {
   
   
