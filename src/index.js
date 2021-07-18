@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import 'modern-normalize/modern-normalize.css';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-// import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.render(
   <React.StrictMode>

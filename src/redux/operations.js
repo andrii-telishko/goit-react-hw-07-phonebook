@@ -28,6 +28,6 @@ const deleteContact = contactId => dispatch => {
     axios.delete(`/contacts/${contactId}`)
         .then(() => dispatch(deleteContactSuccess(contactId)))
         .catch(error => dispatch(deleteContactError(error)));
-}
+};
 
 export default {fetchContacts, addContact, deleteContact}

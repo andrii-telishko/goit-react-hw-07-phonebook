@@ -17,6 +17,6 @@ ContactItem.propTypes = {
 ContactItem.defaultProps = {
     name: "Mickey Mouse",
     number: 123456789
-}
+};
 
 export default ContactItem

@@ -22,26 +22,20 @@ class ContactsList extends Component {
             <>
                 {this.props.isLoadingContacts && <h1>Loading...</h1>}
                 <ul className='contact-list'>
-            {this.props.contacts.map(({id, name, number}) => {
-                return (<li key={id} className='contact-item'><ContactItem
-                    name={name}
-                    number={number} />
-                    <button type='button' onClick={()=>{this.props.onClick(id)}} className='button contact-item__button'>Delete</button>
-                </li>)
-            })}
-        </ul>
+                   {this.props.contacts.map(({id, name, number}) => {
+                       return (<li key={id} className='contact-item'><ContactItem
+                           name={name}
+                           number={number} />
+                          <button type='button' onClick={()=>{this.props.onClick(id)}} className='button contact-item__button'>Delete</button>
+                        </li>)
+                      })}
+               </ul>
             </>
         );
-    
     };
-        
-}
-
-
+};
 
 const mapStateToProps = state => ({
-    // contacts: getFilteredContacts(contacts, filter),
-    // isLoadingContacts: loading
     contacts: getFilteredContacts(state),
     isLoadingContacts: getLoader(state)
 });
@@ -52,24 +46,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
-
-// const ContactsList = ({contacts, onClick}) => {
-//     return (
-//         <ul className='contact-list'>
-//             {contacts.map(({id, name, number}) => {
-//                 return (<li key={id} className='contact-item'><ContactItem
-//                     name={name}
-//                     number={number} />
-//                     <button type='button' onClick={()=>{onClick(id)}} className='button contact-item__button'>Delete</button>
-//                 </li>)
-//             })}
-//         </ul>
-//     );
-// };
-
-// ContactsList.propTypes = {
-//     contacts: PropTypes.array.isRequired,
-//     onClick: PropTypes.func.isRequired
-// };
-
 

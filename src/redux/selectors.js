@@ -8,10 +8,3 @@ export const getFilteredContacts = createSelector([getAllContacts, getFilter],
     (contacts, filter) => {
         return contacts.filter(({ name }) => name.toLowerCase().includes(filter.toLowerCase()));
     });
-
-//     const getFilteredContacts = (contacts, filter) => {
-//     return contacts.filter(({name}) => {
-//       return name.toLowerCase().includes(filter.toLowerCase())
-//     })
-//    };
-// export default {getFilteredContacts, getLoader }
